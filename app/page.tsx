@@ -22,6 +22,7 @@ const ScreenshotCarousel = dynamic(() => import('./components/ScreenshotCarousel
 
 export default function Home() {
   const [isClient, setIsClient] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
@@ -35,35 +36,19 @@ export default function Home() {
     const headerHeight = 80;
     const targetPosition = element.offsetTop - headerHeight;
 
+    // Close mobile menu when navigating
+    setIsMobileMenuOpen(false);
+
     // Ultra-fast scroll with native smooth behavior
     window.scrollTo({
       top: targetPosition,
-      behavior: 'instant' // Instant for maximum performance
+      behavior: 'smooth' // Changed to smooth for better UX
     });
+  };
 
-    // Optional: Add a tiny bit of smoothness without lag
-    // Comment the above and uncomment below if you want minimal smoothness
-    /*
-    const startPos = window.pageYOffset;
-    const distance = targetPosition - startPos;
-    const duration = 200; // Very short duration
-    let startTime: number | null = null;
-
-    const scroll = (currentTime: number) => {
-      if (!startTime) startTime = currentTime;
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      
-      // Simple linear easing for maximum performance
-      window.scrollTo(0, startPos + distance * progress);
-      
-      if (progress < 1) {
-        requestAnimationFrame(scroll);
-      }
-    };
-    
-    requestAnimationFrame(scroll);
-    */
+  // Toggle mobile menu
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
@@ -141,7 +126,10 @@ export default function Home() {
               </RippleButton>
 
               {/* Mobile Menu Button */}
-              <button className="lg:hidden p-2 rounded-lg border border-gray-600/40 hover:border-purple-400/60 hover:bg-gray-700/60 transition-all duration-200">
+              <button 
+                onClick={toggleMobileMenu}
+                className="lg:hidden p-2 rounded-lg border border-gray-600/40 hover:border-purple-400/60 hover:bg-gray-700/60 transition-all duration-200"
+              >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-gray-300">
                   <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -150,6 +138,40 @@ export default function Home() {
           </div>
         </div>
       </header>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 bg-black/95 backdrop-blur-xl z-40 lg:hidden">
+          <div className="flex flex-col items-center justify-center h-full space-y-8">
+            <button
+              onClick={() => scrollToSection('features')}
+              className="text-2xl font-medium text-gray-300 hover:text-white transition-colors duration-200"
+            >
+              Features
+            </button>
+            <button
+              onClick={() => scrollToSection('how-it-works')}
+              className="text-2xl font-medium text-gray-300 hover:text-white transition-colors duration-200"
+            >
+              How It Works
+            </button>
+            <button
+              onClick={() => scrollToSection('screenshots')}
+              className="text-2xl font-medium text-gray-300 hover:text-white transition-colors duration-200"
+            >
+              Screenshots
+            </button>
+            <button
+              onClick={toggleMobileMenu}
+              className="mt-8 p-3 rounded-full border border-gray-600 hover:border-purple-400 transition-colors duration-200"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-gray-300">
+                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-16 px-4 bg-gradient-to-b from-black via-gray-950 to-gray-900 overflow-hidden">
@@ -355,9 +377,9 @@ export default function Home() {
           </div>
           <p className="text-gray-400 mb-4">Daily artist guessing game - With popular artists</p>
           <div className="flex justify-center gap-6 text-sm text-gray-400">
-            <a href="#" className="hover:text-white transition-colors">Privacy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Use</a>
-            <a href="#" className="hover:text-white transition-colors">Contact</a>
+            <a href="/privacy" className="hover:text-white transition-colors">Privacy</a>
+            <a href="/terms" className="hover:text-white transition-colors">Terms of Use</a>
+            <a href="mailto:contact@spolle.com" className="hover:text-white transition-colors">Contact</a>
           </div>
           <p className="text-xs text-gray-500 mt-4">© 2024 Spolle. All rights reserved.</p>
         </div>

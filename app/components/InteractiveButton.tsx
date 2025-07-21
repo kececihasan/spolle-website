@@ -10,11 +10,11 @@ interface InteractiveButtonProps {
   type?: 'primary' | 'secondary';
 }
 
-export default function InteractiveButton({ 
-  children, 
-  className = '', 
+export default function InteractiveButton({
+  children,
+  className = '',
   onClick,
-  type = 'primary' 
+  type = 'primary'
 }: InteractiveButtonProps) {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -56,7 +56,7 @@ export default function InteractiveButton({
       const createHoverParticles = () => {
         const geometry = new THREE.BufferGeometry();
         const vertices = [];
-        
+
         for (let i = 0; i < 20; i++) {
           vertices.push(
             (Math.random() - 0.5) * 4,
@@ -64,7 +64,7 @@ export default function InteractiveButton({
             (Math.random() - 0.5) * 1
           );
         }
-        
+
         geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
 
         const material = new THREE.PointsMaterial({
@@ -111,19 +111,19 @@ export default function InteractiveButton({
             positions[i] += velocities[i];     // x
             positions[i + 1] += velocities[i + 1]; // y
             positions[i + 2] += velocities[i + 2]; // z
-            
+
             // Fade out
             velocities[i] *= 0.98;
             velocities[i + 1] *= 0.98;
             velocities[i + 2] *= 0.98;
-            
+
             if (Math.abs(velocities[i]) > 0.001) {
               allParticlesGone = false;
             }
           }
 
           particles.geometry.attributes.position.needsUpdate = true;
-          
+
           const material = particles.material as THREE.PointsMaterial;
           material.opacity *= 0.95;
 
@@ -133,7 +133,7 @@ export default function InteractiveButton({
             material.dispose();
             return false;
           }
-          
+
           return true;
         });
 
@@ -148,7 +148,7 @@ export default function InteractiveButton({
         const buttonRect = buttonRef.current.getBoundingClientRect();
         const newWidth = buttonRect.width;
         const newHeight = buttonRect.height;
-        
+
         camera.aspect = newWidth / newHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(newWidth, newHeight);
@@ -161,20 +161,20 @@ export default function InteractiveButton({
         if (animationRef.current) {
           cancelAnimationFrame(animationRef.current);
         }
-        
+
         window.removeEventListener('resize', handleResize);
-        
+
         // Clean up all particles
         particlesRef.current.forEach(particles => {
           scene.remove(particles);
           particles.geometry.dispose();
           (particles.material as THREE.Material).dispose();
         });
-        
+
         scene.remove(hoverParticles);
         hoverParticles.geometry.dispose();
         (hoverParticles.material as THREE.Material).dispose();
-        
+
         renderer.dispose();
       };
 
@@ -185,17 +185,17 @@ export default function InteractiveButton({
 
   const handleClick = () => {
     setIsClicked(true);
-    
+
     // Create explosion effect
     if (sceneRef.current) {
       const createExplosionParticles = (count: number = 30) => {
         const geometry = new THREE.BufferGeometry();
         const vertices = [];
         const velocities = [];
-        
+
         for (let i = 0; i < count; i++) {
           vertices.push(0, 0, 0);
-          
+
           const angle = (i / count) * Math.PI * 2;
           const speed = Math.random() * 0.1 + 0.05;
           velocities.push(
@@ -204,7 +204,7 @@ export default function InteractiveButton({
             (Math.random() - 0.5) * 0.05
           );
         }
-        
+
         geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
         geometry.userData = { velocities };
 
@@ -223,9 +223,9 @@ export default function InteractiveButton({
 
       createExplosionParticles(25);
     }
-    
+
     setTimeout(() => setIsClicked(false), 200);
-    
+
     if (onClick) {
       onClick();
     }
@@ -234,9 +234,8 @@ export default function InteractiveButton({
   return (
     <button
       ref={buttonRef}
-      className={`relative overflow-hidden ${className} transition-transform duration-150 ${
-        isClicked ? 'scale-95' : isHovered ? 'scale-105' : 'scale-100'
-      }`}
+      className={`relative overflow-hidden ${className} transition-transform duration-150 ${isClicked ? 'scale-95' : isHovered ? 'scale-105' : 'scale-100'
+        }`}
       onClick={handleClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -244,8 +243,8 @@ export default function InteractiveButton({
       <canvas
         ref={canvasRef}
         className="absolute inset-0 pointer-events-none z-10"
-        style={{ 
-          width: '100%', 
+        style={{
+          width: '100%',
           height: '100%',
         }}
       />

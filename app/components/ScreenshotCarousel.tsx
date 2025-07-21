@@ -44,14 +44,14 @@ export default function ScreenshotCarousel() {
   const ScreenshotImage = ({ screenshot, isActive }: { screenshot: typeof screenshots[0], isActive: boolean }) => {
     return (
       <div className={`relative transition-all duration-500 ${isActive ? 'scale-100 opacity-100' : 'scale-90 opacity-60'}`}>
-        <div className="relative w-80 h-[600px] bg-black rounded-[3rem] p-3 shadow-2xl">
-          <div className="w-full h-full bg-black rounded-[2.5rem] overflow-hidden relative">
+        <div className="relative w-64 h-[480px] md:w-80 md:h-[600px] bg-black rounded-[2.5rem] md:rounded-[3rem] p-2 md:p-3 shadow-2xl mx-auto">
+          <div className="w-full h-full bg-black rounded-[2rem] md:rounded-[2.5rem] overflow-hidden relative">
             <Image
               src={screenshot.image}
               alt={screenshot.title}
               fill
-              className="object-cover rounded-[2rem]"
-              sizes="(max-width: 768px) 100vw, 320px"
+              className="object-cover rounded-[1.5rem] md:rounded-[2rem]"
+              sizes="(max-width: 768px) 256px, 320px"
             />
           </div>
         </div>
@@ -71,37 +71,35 @@ export default function ScreenshotCarousel() {
         
         {/* Phone Carousel Section */}
         <div className="relative w-full mb-16">
-          <div className="flex items-center justify-center min-h-[700px]">
+          <div className="flex items-center justify-center min-h-[500px] md:min-h-[700px]">
             {/* Navigation Buttons */}
             <button
-              className="absolute left-4 z-10 bg-white/10 backdrop-blur-md border border-white/20 rounded-full p-3 hover:bg-white/20 transition-colors"
+              className="absolute left-2 md:left-4 z-10 bg-white/10 backdrop-blur-md border border-white/20 rounded-full p-2 md:p-3 hover:bg-white/20 transition-colors"
               onClick={prevSlide}
             >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-white">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-white md:w-6 md:h-6">
                 <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
 
             <button
-              className="absolute right-4 z-10 bg-white/10 backdrop-blur-md border border-white/20 rounded-full p-3 hover:bg-white/20 transition-colors"
+              className="absolute right-2 md:right-4 z-10 bg-white/10 backdrop-blur-md border border-white/20 rounded-full p-2 md:p-3 hover:bg-white/20 transition-colors"
               onClick={nextSlide}
             >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-white">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-white md:w-6 md:h-6">
                 <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
 
             {/* Phone Carousel */}
-            <div className="flex items-center justify-center space-x-8">
+            <div className="flex items-center justify-center">
               {screenshots.map((screenshot, index) => (
                 <div
                   key={screenshot.id}
                   className={`transition-all duration-500 ${
                     index === currentIndex 
                       ? 'opacity-100 scale-100 z-10' 
-                      : Math.abs(index - currentIndex) === 1
-                      ? 'opacity-40 scale-75'
-                      : 'opacity-0 scale-50 hidden'
+                      : 'opacity-0 scale-75 absolute'
                   }`}
                 >
                   <ScreenshotImage screenshot={screenshot} isActive={index === currentIndex} />
