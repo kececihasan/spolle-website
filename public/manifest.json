@@ -1,0 +1,21 @@
+{
+  "name": "Spolle - Günlük Müzik Tahmin Oyunu",
+  "short_name": "Spolle",
+  "description": "Her gün yeni bir sanatçı tahmin et! Spotify ile entegre günlük müzik bilgi yarışması.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a1a",
+  "theme_color": "#a855f7",
+  "orientation": "portrait",
+  "scope": "/",
+  "lang": "tr",
+  "categories": ["games", "music", "entertainment"],
+  "icons": [
+    {
+      "src": "/images/spolle-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+} 
