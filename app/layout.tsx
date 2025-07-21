@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://spolle.com'),
   title: "Spolle - Günlük Müzik Tahmin Oyunu",
   description: "Her gün yeni bir sanatçı tahmin et! Spotify ile entegre günlük müzik bilgi yarışması. 6 farklı müzik türü ile müzik bilgini test et.",
   keywords: "müzik oyunu, sanatçı tahmin, spotify, günlük oyun, müzik bilgisi, spolle",
@@ -50,9 +51,14 @@ export const metadata: Metadata = {
     ],
   },
   manifest: "/manifest.json",
-  themeColor: "#a855f7",
-  colorScheme: "dark",
-  viewport: "width=device-width, initial-scale=1",
+
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#a855f7',
+  colorScheme: 'dark',
 };
 
 export default function RootLayout({

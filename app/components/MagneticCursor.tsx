@@ -14,9 +14,9 @@ export default function MagneticCursor() {
   const [isVisible, setIsVisible] = useState(false);
   const trailIdRef = useRef(0);
   const lastPointRef = useRef<{ x: number; y: number } | null>(null);
-  const animationFrameRef = useRef<number>();
+  const animationFrameRef = useRef<number | null>(null);
   const lastMoveTimeRef = useRef<number>(Date.now());
-  const fadeTimeoutRef = useRef<NodeJS.Timeout>();
+  const fadeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const addTrailPoint = useCallback((x: number, y: number) => {
     const now = Date.now();

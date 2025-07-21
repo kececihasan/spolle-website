@@ -262,7 +262,7 @@ export default function Home() {
                 <div className="w-16 h-16 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 text-black font-bold text-xl">
                   1
                 </div>
-                <h3 className="font-bold mb-2">Spotify'a Bağlan</h3>
+                <h3 className="font-bold mb-2">Spotify&apos;a Bağlan</h3>
                 <p className="text-gray-300 text-sm">Spotify hesabınla güvenli bir şekilde bağlan</p>
               </div>
               

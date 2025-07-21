@@ -78,42 +78,7 @@ export default function InteractiveButton({
         return new THREE.Points(geometry, material);
       };
 
-      // Create click explosion particles
-      const createExplosionParticles = (count: number = 30) => {
-        const geometry = new THREE.BufferGeometry();
-        const vertices = [];
-        const velocities = [];
-        
-        for (let i = 0; i < count; i++) {
-          vertices.push(0, 0, 0); // Start from center
-          
-          // Random explosion direction
-          const angle = (i / count) * Math.PI * 2;
-          const speed = Math.random() * 0.1 + 0.05;
-          velocities.push(
-            Math.cos(angle) * speed,
-            Math.sin(angle) * speed,
-            (Math.random() - 0.5) * 0.05
-          );
-        }
-        
-        geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-        geometry.userData = { velocities };
 
-        const material = new THREE.PointsMaterial({
-          color: type === 'primary' ? 0x00ff88 : 0x3b82f6,
-          size: 0.08,
-          transparent: true,
-          opacity: 1,
-          blending: THREE.AdditiveBlending,
-        });
-
-        const particles = new THREE.Points(geometry, material);
-        scene.add(particles);
-        particlesRef.current.push(particles);
-        
-        return particles;
-      };
 
       const hoverParticles = createHoverParticles();
       scene.add(hoverParticles);
