@@ -14,16 +14,16 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://spolle.com'),
-  title: "Spolle - Günlük Müzik Tahmin Oyunu",
-  description: "Her gün yeni bir sanatçı tahmin et! Spotify ile entegre günlük müzik bilgi yarışması. 6 farklı müzik türü ile müzik bilgini test et.",
-  keywords: "müzik oyunu, sanatçı tahmin, spotify, günlük oyun, müzik bilgisi, spolle",
+  title: "Spolle - Daily Music Guessing Game",
+  description: "Guess a new artist every day! Daily music quiz with popular artists. Test your music knowledge with 6 different music genres.",
+  keywords: "music game, artist guessing, daily game, music knowledge, spolle",
   authors: [{ name: "Spolle Team" }],
   creator: "Spolle",
   publisher: "Spolle",
   robots: "index, follow",
   openGraph: {
-    title: "Spolle - Günlük Müzik Tahmin Oyunu",
-    description: "Her gün yeni bir sanatçı tahmin et! Spotify ile entegre günlük müzik bilgi yarışması.",
+    title: "Spolle - Daily Music Guessing Game",
+    description: "Guess a new artist every day! Daily music quiz with popular artists.",
     url: "https://spolle.com",
     siteName: "Spolle",
     type: "website",
@@ -38,8 +38,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Spolle - Günlük Müzik Tahmin Oyunu",
-    description: "Her gün yeni bir sanatçı tahmin et! Spotify ile entegre günlük müzik bilgi yarışması.",
+    title: "Spolle - Daily Music Guessing Game",
+    description: "Guess a new artist every day! Daily music quiz with popular artists.",
     images: ["/images/spolle-logo.png"],
   },
   icons: {
@@ -67,7 +67,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="tr">
+    <html lang="en">
       <head>
         <link rel="icon" href="/favicon.png" type="image/png" />
         <link rel="apple-touch-icon" href="/favicon.png" />

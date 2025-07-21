@@ -6,26 +6,26 @@ import Image from 'next/image';
 const screenshots = [
   {
     id: 1,
-    title: "Ana Menü",
-    description: "Spolle oyununa hoş geldiniz! Günlük müzik tahmin oyununuza buradan başlayın.",
-    category: "Ana Sayfa",
-    features: ["Günlük Meydan Okuma", "Temiz Arayüz", "Kolay Başlangıç"],
+    title: "Main Menu",
+    description: "Welcome to Spolle game! Start your daily music guessing challenge from here.",
+    category: "Home Screen",
+    features: ["Daily Challenge", "Clean Interface", "Easy Start"],
     image: "/images/main.jpeg"
   },
   {
     id: 2,
-    title: "Tahmin Ekranı", 
-    description: "Sanatçı hakkında ipuçları alın ve tahminlerinizi yapın. Her ipucu sizi hedefe yaklaştırır.",
-    category: "Oyun Arayüzü",
-    features: ["İpuçları", "Tahmin Sistemi", "Gerçek Zamanlı Geri Bildirim"],
+    title: "Guess Screen", 
+    description: "Get hints about the artist and make your guesses. Each hint brings you closer to the target.",
+    category: "Game Interface",
+    features: ["Hints", "Guess System", "Real-time Feedback"],
     image: "/images/guess.jpeg"
   },
   {
     id: 3,
-    title: "Başarı Ekranı",
-    description: "Tebrikler! Doğru tahminde bulundunuz. Sonuçlarınızı görün ve başarınızı kutlayın.",
-    category: "Sonuç",
-    features: ["Başarı Kutlaması", "Detaylı Sonuçlar", "İstatistikler"],
+    title: "Success Screen",
+    description: "Congratulations! You made the correct guess. View your results and celebrate your success.",
+    category: "Results",
+    features: ["Success Celebration", "Detailed Results", "Statistics"],
     image: "/images/win.jpeg"
   }
 ];
@@ -156,20 +156,20 @@ export default function ScreenshotCarousel() {
         <div className="grid md:grid-cols-3 gap-6 w-full max-w-4xl mt-12">
           <div className="bg-gray-800/80 backdrop-blur-lg p-6 rounded-2xl border-2 border-gray-600 text-center shadow-xl hover:border-green-400/50 transition-all duration-300 hover:transform hover:scale-105">
             <div className="text-3xl mb-3">🎯</div>
-            <h4 className="text-lg font-bold text-white mb-2">Günlük Hedef</h4>
-            <p className="text-gray-200 text-sm">Her gün yeni bir sanatçı tahmin etme imkanı</p>
+            <h4 className="text-lg font-bold text-white mb-2">Daily Target</h4>
+            <p className="text-gray-200 text-sm">Opportunity to guess a new artist every day</p>
           </div>
           
           <div className="bg-gray-800/80 backdrop-blur-lg p-6 rounded-2xl border-2 border-gray-600 text-center shadow-xl hover:border-blue-400/50 transition-all duration-300 hover:transform hover:scale-105">
             <div className="text-3xl mb-3">🎵</div>
-            <h4 className="text-lg font-bold text-white mb-2">Spotify Entegre</h4>
-            <p className="text-gray-200 text-sm">Gerçek müzik verileriyle desteklenen oyun</p>
+            <h4 className="text-lg font-bold text-white mb-2">Popular Artists</h4>
+            <p className="text-gray-200 text-sm">Game powered by popular music data</p>
           </div>
           
           <div className="bg-gray-800/80 backdrop-blur-lg p-6 rounded-2xl border-2 border-gray-600 text-center shadow-xl hover:border-purple-400/50 transition-all duration-300 hover:transform hover:scale-105">
             <div className="text-3xl mb-3">📊</div>
-            <h4 className="text-lg font-bold text-white mb-2">Detaylı Analiz</h4>
-            <p className="text-gray-200 text-sm">Sanatçı bilgileri ve istatistikleri</p>
+            <h4 className="text-lg font-bold text-white mb-2">Detailed Analysis</h4>
+            <p className="text-gray-200 text-sm">Artist information and statistics</p>
           </div>
         </div>
       </div>
