@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Terms() {
   return (
@@ -17,12 +18,12 @@ export default function Terms() {
                 priority
               />
             </div>
-            <a
+            <Link
               href="/"
               className="text-gray-300 hover:text-white font-medium transition-colors duration-200"
             >
               Back to Home
-            </a>
+            </Link>
           </div>
         </div>
       </header>
@@ -69,7 +70,7 @@ export default function Terms() {
                   <li>Play honestly and respect other players</li>
                   <li>Do not share answers or spoil challenges</li>
                   <li>Report bugs and issues responsibly</li>
-                  <li>Respect the game's intended mechanics</li>
+                  <li>Respect the game&apos;s intended mechanics</li>
                 </ul>
               </div>
             </section>
@@ -85,7 +86,7 @@ export default function Terms() {
                   <li>Attempt to hack, reverse engineer, or exploit the app</li>
                   <li>Create multiple accounts to gain unfair advantages</li>
                   <li>Share or distribute copyrighted content</li>
-                  <li>Interfere with other users' enjoyment of the game</li>
+                  <li>Interfere with other users&apos; enjoyment of the game</li>
                   <li>Use automated tools or bots</li>
                 </ul>
               </div>
@@ -131,7 +132,7 @@ export default function Terms() {
               <h2 className="text-2xl font-bold mb-4 text-green-400">Disclaimers</h2>
               <div className="bg-gray-800/50 rounded-xl p-6">
                 <p className="text-gray-300 leading-relaxed mb-4">
-                  Spolle is provided "as is" without warranties of any kind:
+                  Spolle is provided &quot;as is&quot; without warranties of any kind:
                 </p>
                 <ul className="list-disc list-inside text-gray-300 space-y-2">
                   <li>We do not guarantee uninterrupted service</li>

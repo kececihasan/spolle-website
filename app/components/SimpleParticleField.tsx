@@ -12,7 +12,8 @@ export default function SimpleParticleField({ color = '#3366ff' }: SimpleParticl
   const animationRef = useRef<number | null>(null);
 
   useEffect(() => {
-    if (!mountRef.current) return;
+    const currentMountRef = mountRef.current;
+    if (!currentMountRef) return;
 
     try {
       // Scene setup
@@ -35,7 +36,7 @@ export default function SimpleParticleField({ color = '#3366ff' }: SimpleParticl
       renderer.setSize(window.innerWidth, window.innerHeight);
       renderer.setClearColor(0x000000, 0);
 
-      mountRef.current.appendChild(renderer.domElement);
+      currentMountRef.appendChild(renderer.domElement);
 
       // Create particles
       const geometry = new THREE.BufferGeometry();
@@ -91,8 +92,8 @@ export default function SimpleParticleField({ color = '#3366ff' }: SimpleParticl
         
         window.removeEventListener('resize', handleResize);
         
-        if (mountRef.current && renderer.domElement) {
-          mountRef.current.removeChild(renderer.domElement);
+        if (currentMountRef && renderer.domElement) {
+          currentMountRef.removeChild(renderer.domElement);
         }
         
         geometry.dispose();

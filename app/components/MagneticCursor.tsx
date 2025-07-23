@@ -47,18 +47,21 @@ export default function MagneticCursor() {
   }, [setTrailPoints]);
 
   useEffect(() => {
+    const currentFadeTimeout = fadeTimeoutRef.current;
+    const currentAnimationFrame = animationFrameRef.current;
+    
     const updateCursor = (e: MouseEvent) => {
       setIsVisible(true);
       lastMoveTimeRef.current = Date.now();
       
       // Clear any existing fade timeout
-      if (fadeTimeoutRef.current) {
-        clearTimeout(fadeTimeoutRef.current);
+      if (currentFadeTimeout) {
+        clearTimeout(currentFadeTimeout);
       }
       
       // Use requestAnimationFrame for smoother updates
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
+      if (currentAnimationFrame) {
+        cancelAnimationFrame(currentAnimationFrame);
       }
       
       animationFrameRef.current = requestAnimationFrame(() => {
@@ -70,8 +73,8 @@ export default function MagneticCursor() {
       setIsVisible(false);
       setTrailPoints([]);
       lastPointRef.current = null;
-      if (fadeTimeoutRef.current) {
-        clearTimeout(fadeTimeoutRef.current);
+      if (currentFadeTimeout) {
+        clearTimeout(currentFadeTimeout);
       }
     };
 
@@ -90,11 +93,11 @@ export default function MagneticCursor() {
       window.removeEventListener('mousemove', updateCursor);
       window.removeEventListener('mouseleave', hideCursor);
       clearInterval(cleanupInterval);
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
+      if (currentAnimationFrame) {
+        cancelAnimationFrame(currentAnimationFrame);
       }
-      if (fadeTimeoutRef.current) {
-        clearTimeout(fadeTimeoutRef.current);
+      if (currentFadeTimeout) {
+        clearTimeout(currentFadeTimeout);
       }
     };
   }, [addTrailPoint]);

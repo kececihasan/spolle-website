@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Privacy() {
   return (
@@ -17,12 +18,12 @@ export default function Privacy() {
                 priority
               />
             </div>
-            <a
+            <Link
               href="/"
               className="text-gray-300 hover:text-white font-medium transition-colors duration-200"
             >
               Back to Home
-            </a>
+            </Link>
           </div>
         </div>
       </header>

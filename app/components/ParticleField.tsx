@@ -16,7 +16,10 @@ export default function ParticleField({ intensity = 'light', color = '#00ff88' }
   const isInitialized = useRef(false);
 
   useEffect(() => {
-    if (!mountRef.current || isInitialized.current) return;
+    const currentMountRef = mountRef.current;
+    const currentIsInitialized = isInitialized.current;
+    const currentRendererRef = rendererRef.current;
+    if (!currentMountRef || currentIsInitialized) return;
     isInitialized.current = true;
 
     // Scene setup with error handling
@@ -37,7 +40,7 @@ export default function ParticleField({ intensity = 'light', color = '#00ff88' }
       
       renderer.setSize(window.innerWidth, window.innerHeight);
       renderer.setClearColor(0x000000, 0);
-      mountRef.current.appendChild(renderer.domElement);
+      currentMountRef.appendChild(renderer.domElement);
     } catch (error) {
       console.error('WebGL initialization failed:', error);
       return;
@@ -209,8 +212,8 @@ export default function ParticleField({ intensity = 'light', color = '#00ff88' }
       
       try {
         // Clean up renderer DOM element
-        if (mountRef.current && rendererRef.current && mountRef.current.contains(rendererRef.current.domElement)) {
-          mountRef.current.removeChild(rendererRef.current.domElement);
+        if (currentMountRef && currentRendererRef && currentMountRef.contains(currentRendererRef.domElement)) {
+          currentMountRef.removeChild(currentRendererRef.domElement);
         }
         
         // Clean up note shapes
