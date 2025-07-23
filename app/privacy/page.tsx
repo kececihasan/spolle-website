@@ -132,7 +132,7 @@ export default function Privacy() {
                   If you have any questions about this Privacy Policy or your data, please contact us at:
                 </p>
                 <p className="text-blue-400 font-semibold mt-2">
-                  privacy@spolle.com
+                  info@spolle.com
                 </p>
               </div>
             </section>

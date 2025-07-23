@@ -176,7 +176,7 @@ export default function Terms() {
                   If you have questions about these Terms of Use, please contact us at:
                 </p>
                 <p className="text-blue-400 font-semibold mt-2">
-                  legal@spolle.com
+                  info@spolle.com
                 </p>
               </div>
             </section>
